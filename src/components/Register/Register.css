@@ -1,0 +1,247 @@
+.auth {
+  position: relative;
+  max-height: 100vh;
+  width: 100%;
+  max-width: 396px;
+  margin: 0 auto;
+  padding: 70px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth__showcase {
+  width: 396px;
+  max-width: 80%;
+  margin: 0 auto 0 auto;
+  outline: none;
+}
+
+.auth__link-logo {
+  max-width: 38px;
+  max-height: 38px;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+.auth__title {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 45px 0 35px 0;
+  padding: 0;
+  text-align: left;
+  color: #000000;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  width: 100%;
+  letter-spacing: -0.04em;
+  border-style: none;
+}
+
+.auth__area {
+  /* display: block; */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  height: 264px;
+  ;
+}
+
+.auth__action {
+  margin-top: 70px;
+}
+
+.auth__button {
+  width: 100%;
+  min-height: 45px;
+  background-color: #020202;
+  border-radius: 3px;
+  border: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: white;
+  margin: 0 0 20px 0;
+}
+
+.auth__button[disabled] {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
+.auth__text {
+  text-align: center;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+  color: #A0A0A0;
+  ;
+}
+
+.auth__link {
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0;
+  padding: 0;
+  color: #000000;
+  text-decoration: none;
+  margin-left: 6px;
+}
+
+.auth__conflict-error {
+  font-weight: 400;
+  font-size: 10px;
+  text-align: center;
+ 
+  color: #6a8040;
+  position: absolute;
+
+  bottom: -69px;
+
+  margin-bottom: 20px;
+  /* min-height: 60px; */
+}
+
+@media screen and (max-width: 864px) {
+  .auth__showcase {
+    width: 400px;
+    /* width: 800px; */
+    justify-content: center;
+    margin: 0 auto 0 auto;
+  }
+
+  .auth__logo {
+    margin: 0 auto 0 auto;
+  }
+
+  .auth__title {
+    text-align: left;
+    margin: 43px 0 35px 0;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .auth__showcase {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .auth {
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* width: 396px; */
+  }
+
+  .auth__logo {
+    margin: 0 auto 0 auto;
+    align-self: center;
+  }
+
+
+  .auth__link-logo {
+    max-width: 330px;
+  }
+
+  .auth__showcase {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    max-width: 80%;
+    padding: 25px 0 0 0;
+    margin: 0 auto 0 auto;
+  }
+
+  .auth__title {
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    /* margin-bottom: 5px; */
+    margin: 45px auto 80px auto;
+  }
+
+  .auth__action {
+    margin-top: 0px;
+  }
+
+  .auth__button {
+    margin-top: 160px;
+    margin-bottom: 15px;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+
+  .auth__text {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .auth__link {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+
+.inputarea {
+  display: block;
+  position: relative;
+  padding-bottom: 22px;
+  text-align: start;
+}
+
+.inputarea__info {
+  font-size: 10px;
+  line-height: 12px;
+  color: #A0A0A0;
+  margin: 0 0 30px 0;
+  padding: 0;
+  /* margin-bottom: 10px; */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* margin-bottom: 20px; */
+
+}
+.inputarea__input {
+  width: calc(100% - 30px);
+  margin: 5px 0 5px 0;
+  padding: 15px;
+  background-color: #efebeb;
+  border-radius: 8px;
+  border: 0;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: start;
+  outline: none;
+
+  /* left: 0;
+  top: -22px;*/
+}
+
+.inputarea__error_active {
+  display: block;
+  color: #FF4062;
+}
+
+/* @media screen and (max-width: 339px) {
+  .inputarea {
+    padding-bottom: 20px;
+  }
+} */

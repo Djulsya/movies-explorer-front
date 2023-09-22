@@ -1,0 +1,236 @@
+.header {
+  color: white;
+  background-color: #F3C1F8;
+  padding: 20px 50px 30px 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.header__logo {
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px 1px rgba(122, 34, 107, 0.9);
+  border-radius: 50%;
+}
+
+.header__container {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.header__logo:hover {
+  transform: scale(0.5, 0.5);
+}
+
+.header__link {
+  text-align: center;
+  color: rgb(12, 12, 12);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 28px;
+  text-decoration: none;
+}
+
+.header__profile-link {
+  text-align: center;
+  color: rgb(12, 12, 12);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin-bottom: 28px;
+  text-decoration: none;
+}
+
+.header__menu {
+  max-width: 520px;
+  height: 100%;
+  box-sizing: border-box;
+  margin-left: auto;
+  /* background-color: #ffc2f2; */
+  position: relative;
+  z-index: 2;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  /* padding: 160px 0 90px; */
+  box-sizing: border-box;
+}
+
+.header__menu-close-icon {
+  position: absolute;
+  top: 22px;
+  right: 22px;
+  width: 30px;
+  height: 30px;
+}
+
+.header__menu-icon {
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+}
+
+.header__menu-layout {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+
+ .header__movies-link {
+  color: black;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 18px;
+  margin-left: 44px;
+  text-decoration: none;
+}
+
+.header__profile-button {
+  width: 100px;
+  height: 32px;
+  padding-left: 11px;
+  padding-top: 30px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 12px;
+}
+
+.header__profile-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50px;
+  background-color: #313131;
+  background: center no-repeat url(../../images/miniman.svg);
+  margin: 3px 3px 3px 7px;
+  box-shadow: 0px 2px 4px 1px rgba(122, 34, 107, 0.9);
+}
+
+.header__profile-link {
+  margin-left: auto;
+  text-decoration: none;
+}
+
+ .header__saved-movies-link {
+  color: black;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+  margin-left: 16px;
+  text-decoration: none;
+}
+
+.header__signin-button {
+  color: rgb(255, 255, 255);
+  width: 76px;
+  height: 32px;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  background-color: #000000;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 14px 1px rgba(122, 34, 107, 0.9);
+}
+
+.header__signin-link {
+  text-decoration: none;
+}
+
+.header__signup-link {
+  color: #000000;
+  text-decoration: none;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin-right: 30px;
+}
+
+@media screen and (max-width: 770px) {
+  .header {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .header__movies-link {
+    text-align: center;
+    font-size: 18px;
+    line-height: normal;
+    margin-left: 0;
+    margin-bottom: 28px;
+  }
+
+  .header__profile-link {
+    margin-left: 0;
+    margin-top: auto;
+  }
+
+  .header__saved-movies-link {
+    text-align: center;
+    font-size: 18px;
+    line-height: normal;
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .header__home-link {
+    margin-bottom: 24px;
+  }
+
+  /* .header__menu {
+    width: 100%;
+  } */
+
+  .header__menu-close-icon {
+    top: 13px;
+    right: 13px;
+  }
+
+  .header__movies-link {
+    margin-bottom: 24px;
+  }
+
+  .header__signin-button {
+    font-size: 10px;
+    width: 54px;
+    height: 26px;
+  }
+
+  .header__signup-link {
+    font-size: 10px;
+    margin-right: 14px;
+  }
+
+}
