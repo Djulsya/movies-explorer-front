@@ -1,9 +1,8 @@
 import React from 'react';
 import '../MoviesCardList/MoviesCardList.css';
 import MoviesCard from '../MoviesCard/MoviesCard';
-import { moviesApi } from '../../utils/MoviesApi';
 import Preloader from '../Preloader/Preloader';
-import { useLocation } from 'react-router-dom';
+
 import {
   MOVIES_DESKTOP_COUNT,
   MOVIES_DESKTOP,
@@ -21,6 +20,9 @@ function MoviesCardList({
   handleButtonSave,
   saved,
   handleButtonDelete,
+
+  handleSearchMovie,
+  errorMessage
 }) {
 
   const localStorageMovies = JSON.parse(localStorage.getItem('searchmovies'));
@@ -57,7 +59,7 @@ function MoviesCardList({
   },
     [isWindowMedium, movies.length]);
 
-    React.useEffect(() => {
+  React.useEffect(() => {
     if (!saved) {
       if (localStorageMovies) {
         setCardsToRender(localStorageMovies
@@ -68,7 +70,7 @@ function MoviesCardList({
   },
     []);
 
-    React.useEffect(() => {
+  React.useEffect(() => {
     if (!saved) {
       if (movies.length !== 0) {
         setCardsToRender(movies
@@ -93,8 +95,6 @@ function MoviesCardList({
         +
         moreCards);
 
-  //const { pathname } = useLocation();
-
   return (
     <>
       {loading ?
@@ -113,7 +113,7 @@ function MoviesCardList({
                     saved={saved}
                     handleButtonSave={handleButtonSave}
                     handleButtonDelete={handleButtonDelete}
-                  // isWindowMedium={isWindowMedium}
+                    handleSearchMovie={handleSearchMovie}
                   />
                 ))
               }
@@ -123,7 +123,7 @@ function MoviesCardList({
             :
 
             (<div className='filmlist__empty'>
-              НИЧЕГО НЕ НАЙДЕНО
+              {errorMessage}
             </div>)}
 
           {sumRenderCards < maxCards ? (

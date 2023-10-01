@@ -18,7 +18,8 @@ import { moviesApi } from '../../utils/MoviesApi';
 import { authorization } from '../../utils/auth';
 
 import {
-  MAX_DURATION
+  MAX_DURATION,
+  MESSAGE_ERROR_SEARCH
 } from '../../utils/constants';
 
 function App() {
@@ -38,6 +39,9 @@ function App() {
 
   const [shortsIsChecked, setShortsIsChecked] = React.useState(false);
 
+  const errorMessageDefault = localStorage.getItem('errorMessage') ?? '';
+  const [errorMessage, setErrorMessage] = React.useState(errorMessageDefault);
+
   const token = localStorage.getItem('jwt');
   const navigate = useNavigate();
   const location = useLocation();
@@ -51,7 +55,14 @@ function App() {
   };
 
   function handleSearchMovie(text) {
-
+    if (allMovies.length === 0) {
+      moviesApi
+        .getMovies()
+        .then(data => {
+          localStorage.setItem('moviesAll', JSON.stringify(data))
+          setAllMovies(JSON.parse(localStorage.getItem('moviesAll')))
+        })
+    }
     var searchArray = allMovies
       .filter(movie => movie.nameRU
         .toLowerCase()
@@ -60,11 +71,11 @@ function App() {
 
     console.log(shortsIsChecked)
 
-    if(shortsIsChecked){
+    if (shortsIsChecked) {
       searchArray = searchArray
         .filter(movie => movie.duration < MAX_DURATION)
-      }
-      setMoviesFromSearch(searchArray);
+    }
+    setMoviesFromSearch(searchArray);
 
     localStorage
       .setItem('search-text', JSON
@@ -77,6 +88,14 @@ function App() {
     localStorage
       .setItem('searchmovies', JSON
         .stringify(searchArray));
+
+    if (searchArray.length === 0) {
+      setErrorMessage(MESSAGE_ERROR_SEARCH.NO_SEARCH);
+      localStorage.setItem('errorMessage', MESSAGE_ERROR_SEARCH.NO_SEARCH);
+    } else {
+      setErrorMessage('');
+      localStorage.setItem('errorMessage', '');
+    };
   };
 
   function handleSignUp({ email, password, name }) {
@@ -212,12 +231,7 @@ function App() {
           setCurrentUser(getUserInfoResult);
         })
         .catch(() => handleSignOut())
-      moviesApi
-        .getMovies()
-        .then(data => {
-          localStorage.setItem('moviesAll', JSON.stringify(data))
-          setAllMovies(JSON.parse(localStorage.getItem('moviesAll')))
-        })
+
         .catch(() => handleSignOut())
       mainApi
         .getMovies()
@@ -236,12 +250,10 @@ function App() {
     setShortsIsChecked(!shortsIsChecked)
   };
 
-  useEffect(() =>
-  {
+  useEffect(() => {
     var text = JSON
-    .parse(localStorage.getItem('search-text'));
-    if(!!text)
-    {handleSearchMovie(text)}
+      .parse(localStorage.getItem('search-text'));
+    if (!!text) { handleSearchMovie(text) }
 
   },
     [shortsIsChecked]);
@@ -317,7 +329,10 @@ function App() {
                 shortsIsChecked={shortsIsChecked}
                 handleCheck={handleCheck}
                 handleSearchMovie={handleSearchMovie}
-                movies={moviesFromSearch} />} />
+                movies={moviesFromSearch}
+
+                errorMessage={errorMessage}
+              />} />
           <Route path='/saved-movies'
             element={
               <ProtectedRoute component={SavedMovies}

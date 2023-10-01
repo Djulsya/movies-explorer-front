@@ -9,3 +9,7 @@ export const MOVIES_MOBILE_COUNT = 5;
 
 export const MOVIES_DESKTOP = 3;
 export const MOVIES_MOBILE = 2;
+
+export const MESSAGE_ERROR_SEARCH = {
+  NO_SEARCH: 'Ничего не найдено',
+};

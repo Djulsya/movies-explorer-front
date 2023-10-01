@@ -99,7 +99,7 @@ function SearchForm({
       <p className='search__errortext'>
         {searchError}
       </p>
-     
+
     </section>
   );
 };

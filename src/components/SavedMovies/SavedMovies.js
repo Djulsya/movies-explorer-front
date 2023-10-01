@@ -16,7 +16,7 @@ function SavedMovies({
 
   const [findSavedMovies, setFindSavedMovies] = React.useState([]);
   const [findText, setFindText] = React.useState('');
-  const [errorText, setErrorText] = React.useState('');
+  //const [errorText, setErrorText] = React.useState('');
   const [shortsIsChecked, setShortsIsChecked] = React.useState(false);
 
   const handleCheck = () => {
@@ -38,8 +38,7 @@ function SavedMovies({
         searchArray = searchArray
         .filter(movie => movie.duration < MAX_DURATION)
       }
-
-      setFindSavedMovies(searchArray);
+        setFindSavedMovies(searchArray);
   };
 
    React.useEffect(() =>

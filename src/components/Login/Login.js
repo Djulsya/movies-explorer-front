@@ -139,8 +139,7 @@ function Login({
 
             <button className='auth__button link'
               type='submit'
-              disabled={isDisabled}
-              >
+              disabled={isDisabled}>
              Войти
             </button>
 

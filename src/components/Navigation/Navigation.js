@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 
 function Navigation({ onOpen, isOpen, onClose }) {
-  
+
 
   return (
     <>
@@ -57,7 +57,7 @@ function Navigation({ onOpen, isOpen, onClose }) {
 
       </nav>
 
-      <button className='navigate__button link'
+      <button className='navigate__button'
         onClick={onOpen}
         onClose={onClose}>
 

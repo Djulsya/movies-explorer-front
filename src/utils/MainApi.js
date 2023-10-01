@@ -19,7 +19,7 @@ class MainApi {
         "Authorization": `Bearer ${jwt}`
       },
       method: "GET",
-      //credentials: 'include',
+      credentials: 'include',
     }).then((res) => this._checkError(res));
   };
 
@@ -31,7 +31,7 @@ class MainApi {
         "Authorization": `Bearer ${jwt}`
       },
       method: "PATCH",
-      // credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(
         {
           "email": `${email}`,
@@ -48,7 +48,7 @@ class MainApi {
         "Authorization": `Bearer ${jwt}`
       },
       method: "GET",
-      //credentials: 'include',
+      credentials: 'include',
     }).then((res) => this._checkError(res));
   };
 
@@ -60,7 +60,7 @@ class MainApi {
         "Authorization": `Bearer ${jwt}`
       },
       method: "POST",
-      //credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify({
         country: movie.country,
         director: movie.director,
@@ -85,7 +85,7 @@ class MainApi {
         "Authorization": `Bearer ${jwt}`
       },
       method: "DELETE",
-      //credentials: 'include',
+      credentials: 'include',
     }).then((res) => this._checkError(res));
   };
 }

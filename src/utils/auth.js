@@ -10,26 +10,13 @@ constructor({ link }) {
     return Promise.reject(res.status);
   };
 
-  registers(name, email, password) {
-    return fetch(`${this._url}/signup`, {
-      method: "POST",
-      //credentials: 'include',
-      headers: this._headers,
-      body: JSON.stringify({
-          "email": `${email}`,
-          "password": `${password}`,
-          "name": `${name}`,
-        })
-    }).then((res) => this._checkError(res));
-  };
-
   register({ email, password, name }) {
     return fetch(this._link + '/signup', {
       headers: {
         "Content-Type": "application/json"
       },
       method: 'POST',
-    //  credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(
         {
           "email": `${email}`,
@@ -47,7 +34,7 @@ constructor({ link }) {
         "Content-Type": "application/json"
       },
       method: 'POST',
-     // credentials: 'include',
+      credentials: 'include',
       body: JSON.stringify(
         {
           "email": `${email}`,
@@ -58,8 +45,9 @@ constructor({ link }) {
   };
 
   checkToken(jwt) {
-    return fetch(this._link + ' /users/me', {
+    return fetch(this._link + '/users/me', {
       method: 'GET',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${jwt}`
@@ -73,6 +61,7 @@ constructor({ link }) {
         "Content-Type": "application/json"
       },
       method: 'POST',
+      credentials: 'include',
     }).then((res) => this._checkError(res));
   };
 };

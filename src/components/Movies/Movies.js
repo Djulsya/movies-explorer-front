@@ -5,16 +5,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import SearchForm from '../SearchForm/SearchForm';
 
 function Movies({
-  shortsIsChecked, //
+  shortsIsChecked,
   handleSearchMovie,
   movies,
   handleButtonSave,
   loading,
   handleButtonDelete,
   handleCheck,
-
-  filterMovies,
-  saved, findSavedMovies,
+  errorMessage,
 }) {
 
   return (
@@ -24,8 +22,6 @@ function Movies({
         handleSearchMovie={handleSearchMovie}
         isChecked={shortsIsChecked}
         handleCheck={handleCheck}
-
-      // filterMovies={filterMovies}
       />
       {loading ? <Preloader />
         :
