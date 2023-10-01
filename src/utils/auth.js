@@ -7,7 +7,7 @@ constructor({ link }) {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Произошла ошибка: ${res.status}`);
+    return Promise.reject(res.status);
   };
 
   registers(name, email, password) {
@@ -80,7 +80,7 @@ constructor({ link }) {
 export const authorization = new Authorization({ link: 'http://localhost:4000' });
 
 // const authConfig = {
-//   url: 'http://localhost:4000', // api.jb.beatfilmmovies.nomoreparties.co http://localhost:4000
+//   url: 'http://localhost:4000', // https://api.jb.beatfilmmovies.nomoreparties.co http://localhost:4000
 //   headers: {
 //     //'Accept': 'application/json',
 //     'Content-Type': 'application/json'

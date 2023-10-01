@@ -1,12 +1,13 @@
 .profile {
   /* background: linear-gradient(#F3C1F8, white); */
-  background: radial-gradient(at top, #F3C1F8 70%, #0a0600, #000000);
+  /* background: radial-gradient(at top, #F3C1F8 70%, #0a0600, #000000); */
+  background: linear-gradient(#F3C1F8, white); 
   padding: 104px 0 70px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  height: 70vh;
+  height: 100%;
 }
 
 .profile__submit-button {

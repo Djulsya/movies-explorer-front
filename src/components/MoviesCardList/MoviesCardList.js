@@ -4,6 +4,15 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 import { moviesApi } from '../../utils/MoviesApi';
 import Preloader from '../Preloader/Preloader';
 import { useLocation } from 'react-router-dom';
+import {
+  MOVIES_DESKTOP_COUNT,
+  MOVIES_DESKTOP,
+  MOVIES_MOBILE_COUNT,
+  MOVIES_MOBILE,
+  MOVIES_TABLET_COUNT,
+  PAGE_DESKTOP,
+  PAGE_TABLET,
+} from '../../utils/constants';
 
 
 function MoviesCardList({
@@ -22,24 +31,22 @@ function MoviesCardList({
   const [moreCards, setMoreCards] = React.useState(3);
   const [isWindowMedium, setIsWindowMedium] = React.useState(window.innerWidth);
 
-  const WINDOW_WIDTH = 1213;
-  const MOBILE_WIDTH = 730;
-
   React.useEffect(() => {
     const handleResize = () => {
       setIsWindowMedium(() => window.innerWidth);
     };
-
-    if (isWindowMedium <= WINDOW_WIDTH) {
-      setSumRenderCards(5);
-      setMoreCards(2);
-    } else if (isWindowMedium <= MOBILE_WIDTH) {
-      setSumRenderCards(8);
-      setMoreCards(2);
-    } else {
-      setSumRenderCards(12);
-      setMoreCards(3);
-    };
+    if (isWindowMedium >= PAGE_DESKTOP) {
+      setSumRenderCards(MOVIES_DESKTOP_COUNT);
+      setMoreCards(MOVIES_DESKTOP);
+    }
+    if (isWindowMedium > PAGE_TABLET && isWindowMedium < PAGE_DESKTOP) {
+      setSumRenderCards(MOVIES_TABLET_COUNT);
+      setMoreCards(MOVIES_MOBILE);
+    }
+    if (isWindowMedium <= PAGE_TABLET) {
+      setSumRenderCards(MOVIES_MOBILE_COUNT);
+      setMoreCards(MOVIES_MOBILE);
+    }
 
     window
       .addEventListener('resize', handleResize);
@@ -56,13 +63,6 @@ function MoviesCardList({
         setCardsToRender(localStorageMovies
           .slice(0, sumRenderCards))
         setMaxCards(localStorageMovies.length)
-      } else {
-        setLoading(true)
-        moviesApi
-          .getMovies()
-          .then((allmovies) => setCardsToRender(allmovies))
-          .catch((err) => console.log(err))
-          .finally(() => setLoading(false))
       };
     };
   },
@@ -74,10 +74,6 @@ function MoviesCardList({
         setCardsToRender(movies
           .slice(0, sumRenderCards));
         setMaxCards(movies.length)
-      } else if (localStorageMovies) {
-        setCardsToRender(localStorageMovies
-          .slice(0, sumRenderCards))
-        setMaxCards(localStorageMovies.length)
       } else {
         setCardsToRender([])
       }
@@ -127,7 +123,7 @@ function MoviesCardList({
             :
 
             (<div className='filmlist__empty'>
-              Упс... Ничего нет &#128511;
+              НИЧЕГО НЕ НАЙДЕНО
             </div>)}
 
           {sumRenderCards < maxCards ? (

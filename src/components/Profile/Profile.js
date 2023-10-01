@@ -32,7 +32,7 @@ function Profile({
       name: currentUser.name ? currentUser.name : '',
       email: currentUser.email ? currentUser.email : ''
     });
-  }, 
+  },
   [currentUser]);
 
   function onSubmit(event) {
@@ -73,7 +73,7 @@ function Profile({
     if
       (!values.name) {
       formsIsValid = false;
-      errMessage.name = 'Обязательное поле';
+      errMessage.name = '';
     } else if
       (values.name.length < 2 || values.name.length > 20) {
       formsIsValid = false;
@@ -85,7 +85,7 @@ function Profile({
     if
       (!values.email) {
       formsIsValid = false;
-      errMessage.email = 'Обязательное поле';
+      errMessage.email = '';
     } else if
       (!values.email.match
         (/\w+@\w+\.\w+/)) {
@@ -96,7 +96,7 @@ function Profile({
     }
 
     setIsActiveButton(formsIsValid);
-  }, 
+  },
   [values]);
 
   return (

@@ -3,17 +3,17 @@ import '../Login/Login.css';
 import { Link, useNavigate } from 'react-router-dom';
 import useFormValidation  from '../../hooks/useFormValidation';
 
-function Login({ 
-  isLoggedIn, 
-  handleSignIn, 
-  errorResponse, 
+function Login({
+  isLoggedIn,
+  handleSignIn,
+  errorResponse,
 }) {
-  
-  const { 
+
+  const {
     values,
-    isValid, 
-    resetForm, 
-    handleChange 
+    isValid,
+    resetForm,
+    handleChange
   } = useFormValidation();
 
   const navigate = useNavigate();
@@ -44,11 +44,15 @@ function Login({
     } else if (errorResponse == 429) {
       formsIsValid = false;
       setFetchTextError('Слишком много запросов в минуту ლ(ಠ_ಠ ლ)')
+    } else if (errorResponse == 401) {
+      formsIsValid = false;
+      setFetchTextError('Введены неправильный email или пароль')
+      console.log(fetchTextError);
     } else if (errorResponse == '') {
       setFetchTextError('')
     };
     setIsDisabled(!formsIsValid);
-  }, 
+  },
   [errorResponse]);
 
   React.useEffect(() => {
@@ -58,7 +62,7 @@ function Login({
     if
       (!values.email) {
       formsIsValid = false;
-      errMessage.email = 'Обязательное поле';
+      errMessage.email = '';
     } else if
       (!values.email.match
         (/\w+@\w+\.\w+/)) {
@@ -71,7 +75,7 @@ function Login({
     if
       (!values.password) {
       formsIsValid = false;
-      errMessage.password = 'Обязательное поле';
+      errMessage.password = '';
     } else if
       (values.password.length < 6) {
       formsIsValid = false;
@@ -80,7 +84,7 @@ function Login({
       errMessage.password = '';
     };
     setIsDisabled(!formsIsValid);
-  }, 
+  },
   [values]);
 
   return (
@@ -113,7 +117,7 @@ function Login({
 
                <span className='inputarea__error_active'>
                 {errMessage.email}
-              </span> 
+              </span>
 
             </label>
 
@@ -129,7 +133,7 @@ function Login({
 
                <span className='inputarea__error_active'>
                 {errMessage.password}
-              </span> 
+              </span>
 
             </label>
 

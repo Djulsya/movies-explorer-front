@@ -1,9 +1,9 @@
 .techs {
-   padding: 50px 50px 100px 50px; 
+   padding: 50px 50px 100px 50px;
   /* padding-bottom: 100px;
   padding-top: 50px; */
   margin: 0;
-  background: no-repeat center/50% url(../../images/K3FN.gif);
+  /* background: no-repeat center/50% url(../../images/K3FN.gif); */
   background-color: rgba(228, 226, 226, 0.162);
   background-blend-mode: overlay;
 }
@@ -24,8 +24,8 @@
   margin-right: auto;
   display: flex;
   flex-direction: column;
-  background-color: rgb(232, 232, 232, 0.8);
-  box-shadow: 1px 1px 14px 1px #8a9477;
+  /* background-color: rgb(232, 232, 232, 0.8);
+  box-shadow: 1px 1px 14px 1px #8a9477; */
   border-radius: 10px;
 }
 
@@ -38,8 +38,8 @@
   margin-top: -15px;
   margin-left: auto;
   margin-right: auto;
-  background-color: #e8e8e8cc;
-  box-shadow: 1px 1px 14px 1px #8a9477;
+  /* background-color: #e8e8e8cc;
+  box-shadow: 1px 1px 14px 1px #8a9477; */
   border-radius: 10px;
 }
 

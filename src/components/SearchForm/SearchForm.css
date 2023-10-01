@@ -81,6 +81,11 @@
   color: #000000;
 }
 
+.search__errortext {
+  color: #ff0000;
+  text-align: center;
+}
+
 .search__slidergroup {
   display: flex;
   flex-direction: row;

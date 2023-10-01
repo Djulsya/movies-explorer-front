@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import logo from '../../images/47tv.gif';
+import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 import '../Header/Header.css';
 

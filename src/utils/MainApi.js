@@ -7,7 +7,8 @@ class MainApi {
     if (res.ok) {
       return res.json();
     }
-    return Promise.reject(`Произошла ошибка: ${res.status}`);
+
+    return Promise.reject(res.status);
   };
 
   getUserInfo() {
@@ -89,4 +90,5 @@ class MainApi {
   };
 }
 
-export const mainApi = new MainApi({ link: 'http://localhost:4000' }) //https://api.jb.beatfilmmovies.nomoreparties.co  http://localhost:4000
+export const mainApi = new MainApi({ link: 'http://localhost:4000' })
+//https://api.jb.beatfilmmovies.nomoreparties.co  http://localhost:4000

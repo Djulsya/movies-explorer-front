@@ -2,4 +2,6 @@
 
 Название макета: light-4
 
-Ссылка https://jb.beatfilmmovies.nomoreparties.co
+Ссылка: https://jb.beatfilmmovies.nomoreparties.co
+
+Pull requests: https://github.com/Djulsya/movies-explorer-front/pull/1

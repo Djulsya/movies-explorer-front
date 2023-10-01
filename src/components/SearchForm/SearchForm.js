@@ -10,6 +10,11 @@ function SearchForm({
   handleCheck,
 }) {
 
+  const [searchError, setSearchError] = React.useState(false);
+  function resetSearchError(){
+    setSearchError('')
+  }
+
   const {
     values,
     handleChange,
@@ -20,14 +25,13 @@ function SearchForm({
   function onSubmit(event) {
     event
       .preventDefault();
-    if (!saved) {
-      if (isValid) {
-        handleSearchMovie(values)
-      }
+
+    if (saved) {
+      handleSavedMovie(values.text)
+    }else if (isValid) {
+      handleSearchMovie(values.text)
     } else {
-      if (isValid) {
-        handleSavedMovie(values)
-      };
+      setSearchError('Нужно ввести ключевое слово')
     };
   };
 
@@ -62,6 +66,7 @@ function SearchForm({
               name='text'
               placeholder='Поиск...&#128253;'
               required
+              onFocus={resetSearchError}
             />
           </div>
         </div>
@@ -91,6 +96,10 @@ function SearchForm({
           </div>
         </div>
       </form>
+      <p className='search__errortext'>
+        {searchError}
+      </p>
+     
     </section>
   );
 };

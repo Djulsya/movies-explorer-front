@@ -3,17 +3,17 @@ import '../Register/Register.css';
 import { Link, useNavigate } from 'react-router-dom';
 import useFormValidation from '../../hooks/useFormValidation';
 
-function Register({ 
+function Register({
   isLoggedIn,
-  handleSignUp, 
-  errorResponse, 
+  handleSignUp,
+  errorResponse,
 }) {
 
-  const { 
-    handleChange, 
-    isValid, 
-    values, 
-    resetForm 
+  const {
+    handleChange,
+    isValid,
+    values,
+    resetForm
   } = useFormValidation();
 
   const navigate = useNavigate();
@@ -48,7 +48,7 @@ function Register({
       setFetchTextError('')
     }
     setIsDisabled(!formsIsValid);
-  }, 
+  },
   [errorResponse]);
 
   React.useEffect(() => {
@@ -92,7 +92,7 @@ function Register({
       errMessage.password = '';
     }
     setIsDisabled(!formsIsValid);
-  }, 
+  },
   [values]);
 
   return (
@@ -127,7 +127,7 @@ function Register({
 
                 <span className='inputarea__error_active'>
                   {errMessage.name}
-                </span> 
+                </span>
 
               </label>
 
@@ -143,7 +143,7 @@ function Register({
 
                  <span className='inputarea__error_active'>
                   {errMessage.email}
-                </span> 
+                </span>
 
               </label>
 
@@ -159,7 +159,7 @@ function Register({
 
                  <span className='inputarea__error_active'>
                   {errMessage.password}
-                </span> 
+                </span>
 
               </label>
 

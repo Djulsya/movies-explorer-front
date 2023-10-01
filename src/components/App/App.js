@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../App/App.css';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Header from '../Header/Header';
@@ -17,6 +17,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { moviesApi } from '../../utils/MoviesApi';
 import { authorization } from '../../utils/auth';
 
+import {
+  MAX_DURATION
+} from '../../utils/constants';
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
@@ -29,7 +33,7 @@ function App() {
 
   const [allMovies, setAllMovies] = React.useState([]);
   const [savedMovies, setSavedMovies] = React.useState([]);
-  const [findSavedMovies, setFindSavedMovies] = React.useState([]);
+
   const [moviesFromSearch, setMoviesFromSearch] = React.useState([]);
 
   const [shortsIsChecked, setShortsIsChecked] = React.useState(false);
@@ -37,8 +41,6 @@ function App() {
   const token = localStorage.getItem('jwt');
   const navigate = useNavigate();
   const location = useLocation();
-
-  const MAX_DURATION = 40;
 
   function handleMenuPopupOpen() {
     setIsMenuPopupOpen(true);
@@ -48,24 +50,25 @@ function App() {
     setIsMenuPopupOpen(false);
   };
 
-  function handleSearchMovie(values) {
+  function handleSearchMovie(text) {
 
-    const searchArray = allMovies
+    var searchArray = allMovies
       .filter(movie => movie.nameRU
         .toLowerCase()
-        .includes(values.text
+        .includes(text
           .toLowerCase()));
 
-    shortsIsChecked
-      ?
-      setMoviesFromSearch(searchArray
-        .filter(movie => movie.duration < MAX_DURATION))
-      :
+    console.log(shortsIsChecked)
+
+    if(shortsIsChecked){
+      searchArray = searchArray
+        .filter(movie => movie.duration < MAX_DURATION)
+      }
       setMoviesFromSearch(searchArray);
 
     localStorage
       .setItem('search-text', JSON
-        .stringify(values.text));
+        .stringify(text));
 
     localStorage
       .setItem('shorts', JSON
@@ -73,11 +76,7 @@ function App() {
 
     localStorage
       .setItem('searchmovies', JSON
-        .stringify(allMovies
-          .filter(movie => movie.nameRU
-            .toLowerCase()
-            .includes(values.text
-              .toLowerCase()))));
+        .stringify(searchArray));
   };
 
   function handleSignUp({ email, password, name }) {
@@ -127,7 +126,7 @@ function App() {
       navigate({ replace: false });
       return true;
     } catch (err) {
-      setIsLoggedIn(false);
+      handleSignOut()
     }
   }
 
@@ -138,16 +137,8 @@ function App() {
         .addMovie(movie)
         .then((savedMovie) => {
           setSavedMovies([...savedMovies, savedMovie])
-        });
+        }).catch(() => handleSignOut());
     };
-  };
-
-  function handleSavedMovie(values) {
-    setFindSavedMovies(savedMovies
-      .filter(savedMovie => savedMovie.nameRU
-        .toLowerCase()
-        .includes(values.text
-          .toLowerCase())));
   };
 
   function handleButtonDelete(movie, saved) {
@@ -161,7 +152,8 @@ function App() {
           setSavedMovies([...savedMovies
             .slice(0, deleteIndex), ...savedMovies
               .slice(deleteIndex + 1)])
-        });
+        })
+        .catch(() => handleSignOut());
     } else {
       mainApi
         .deleteMovie(movie._id)
@@ -171,7 +163,8 @@ function App() {
           setSavedMovies([...savedMovies
             .slice(0, deleteIndex), ...savedMovies
               .slice(deleteIndex + 1)])
-        });
+        })
+        .catch(() => handleSignOut());
     };
   };
 
@@ -203,7 +196,7 @@ function App() {
           }
         })
         .catch(() => {
-          setIsLoggedIn(false);
+          handleSignOut();
         })
         .finally(() => setLoading(false))
     };
@@ -218,19 +211,21 @@ function App() {
         .then((getUserInfoResult) => {
           setCurrentUser(getUserInfoResult);
         })
+        .catch(() => handleSignOut())
       moviesApi
         .getMovies()
         .then(data => {
           localStorage.setItem('moviesAll', JSON.stringify(data))
           setAllMovies(JSON.parse(localStorage.getItem('moviesAll')))
         })
+        .catch(() => handleSignOut())
       mainApi
         .getMovies()
         .then((MainApiGetMoviesResult) => {
           setSavedMovies(MainApiGetMoviesResult.data)
         })
         .catch((err) => {
-          console.log(err);
+          handleSignOut()
         })
         .finally(() => setLoading(false))
     };
@@ -240,6 +235,16 @@ function App() {
   const handleCheck = () => {
     setShortsIsChecked(!shortsIsChecked)
   };
+
+  useEffect(() =>
+  {
+    var text = JSON
+    .parse(localStorage.getItem('search-text'));
+    if(!!text)
+    {handleSearchMovie(text)}
+
+  },
+    [shortsIsChecked]);
 
   const header = () => {
     const { pathname } = location;
@@ -320,9 +325,7 @@ function App() {
                 movies={savedMovies}
                 handleButtonDelete={handleButtonDelete}
                 onOpen={handleMenuPopupOpen}
-                handleSavedMovie={handleSavedMovie}
                 loading={loading}
-                findSavedMovies={findSavedMovies}
               //  handleSearchMovie={handleSearchMovie}
               //  filterMovies={filterMovies}
               />} />

@@ -11,7 +11,7 @@ function NotFound() {
       <h1 className='notfound__title'>404</h1>
       <p className='notfound__subtitle'>Страница не найдена</p>
       <button className='notfound__link link'
-        onClick={() => navigate(-1)}>
+        onClick={() => navigate(-3)}>
         Назад
       </button>
     </section>
