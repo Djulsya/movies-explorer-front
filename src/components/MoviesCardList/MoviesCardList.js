@@ -114,6 +114,7 @@ function MoviesCardList({
                     handleButtonSave={handleButtonSave}
                     handleButtonDelete={handleButtonDelete}
                     handleSearchMovie={handleSearchMovie}
+                   // errorMessage={errorMessage}
                   />
                 ))
               }

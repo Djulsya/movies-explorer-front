@@ -22,6 +22,8 @@ function Movies({
         handleSearchMovie={handleSearchMovie}
         isChecked={shortsIsChecked}
         handleCheck={handleCheck}
+
+        //errorMessage={errorMessage}
       />
       {loading ? <Preloader />
         :
@@ -29,8 +31,9 @@ function Movies({
           movies={movies}
           handleButtonSave={handleButtonSave}
           handleButtonDelete={handleButtonDelete}
-        />}
-
+          errorMessage={errorMessage}
+        />
+  }
     </main>
 
   );

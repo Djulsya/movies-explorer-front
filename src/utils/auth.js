@@ -66,7 +66,7 @@ constructor({ link }) {
   };
 };
 
-export const authorization = new Authorization({ link: 'http://localhost:4000' });
+export const authorization = new Authorization({ link: 'https://api.jb.beatfilmmovies.nomoreparties.co' });
 
 // const authConfig = {
 //   url: 'http://localhost:4000', // https://api.jb.beatfilmmovies.nomoreparties.co http://localhost:4000

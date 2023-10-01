@@ -23,6 +23,7 @@ import {
 } from '../../utils/constants';
 
 function App() {
+
   const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const [isMenuPopupOpen, setIsMenuPopupOpen] = React.useState(false);

@@ -90,5 +90,5 @@ class MainApi {
   };
 }
 
-export const mainApi = new MainApi({ link: 'http://localhost:4000' })
+export const mainApi = new MainApi({ link: 'https://api.jb.beatfilmmovies.nomoreparties.co' })
 //https://api.jb.beatfilmmovies.nomoreparties.co  http://localhost:4000

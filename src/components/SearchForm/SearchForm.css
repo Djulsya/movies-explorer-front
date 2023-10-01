@@ -82,8 +82,9 @@
 }
 
 .search__errortext {
-  color: #ff0000;
+  color: #fd5050;
   text-align: center;
+  margin-top: 40px;
 }
 
 .search__slidergroup {
