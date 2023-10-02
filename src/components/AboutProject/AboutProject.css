@@ -1,0 +1,241 @@
+.about {
+  padding: 60px 0 60px 0;
+  margin: 0;
+  /* background: linear-gradient(#f4a5fb, #f0f8e0, white); */
+}
+
+.about__container {
+  padding: 0;
+}
+
+.about__info {
+  display: grid;
+  grid-template-columns: repeat(2, 47%);
+  gap: 55px;
+  margin-top: 20px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.about__title {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  margin: 0 0 27px 0;
+  padding: 0;
+  width: 40vw;
+}
+
+.about__description {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.about__area {
+  margin: 110px 0 50px 0;
+  display: grid;
+  grid-template-columns: 20% 80%;
+  list-style-type: none;
+  padding: 0;
+}
+
+.about__table-grey {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  padding: 9px;
+  margin: 0;
+  background-color: #F2F2F2;
+  color: rgb(8, 66, 88);
+  box-shadow: 1px 1px 14px 1px #8a9477;
+}
+
+.about__table-black {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  padding: 9px;
+  margin: 0;
+  background-color: black;
+  background-image: url(../../images/pomehi.gif);
+
+  color: white;
+  box-shadow: 1px 1px 14px 5px #8a9477;
+}
+
+.about__table-pale {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  color: #A0A0A0;
+  padding: 14px 0 0 0;
+  margin: 0;
+}
+
+@media screen and (max-width: 1279px) {
+  .about {
+    padding: 40px 20px 0 20px;
+  }
+
+  .about__title {
+    min-height: 48px;
+  }
+
+  .about__table {
+    margin: 88px 0 50px 0;
+  }
+
+  .about__project {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 892px) {
+  .about__info {
+    gap: 40px;
+  }
+}
+
+@media screen and (max-width: 786px) {
+  .about {
+    padding: 40px 20px 40px 20px;
+  }
+
+  .about__info {
+    grid-template-columns: repeat(2, 45%);
+    gap: 45px;
+    padding-top: 15px;
+  }
+
+  .about__container {
+    padding: 0 0 0 5px;
+  }
+
+  .about__project {
+    width: 40vw;
+  }
+
+  .about__title {
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.8px;
+    width: 39vw;
+  }
+
+  .about__description {
+    font-size: 12px;
+    line-height: 18px;
+    width: 40vw;
+  }
+
+  .about__area {
+    margin: 93px 0 50px;
+    grid-template-columns: 21% 78%;
+  }
+
+  .about__table-pale {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .about__info {
+    grid-template-columns: repeat(1, 90%);
+    margin-top: 0;
+    padding-top: 5px;
+  }
+
+  .about__project {
+    width: 70vw;
+  }
+
+  .about__area {
+    margin: 93px 0 50px;
+    grid-template-columns: 21% 78%;
+  }
+
+  .about__title {
+    width: 70vw;
+    min-height: 72px;
+  }
+
+  .about__description {
+    width: 70vw;
+  }
+}
+
+@media screen and (max-width: 339px) {
+  .about {
+    max-width: 259px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    margin-right: 4px;
+  }
+
+  .about__container {
+    padding-left: 0;
+  }
+
+  .about__project {
+    width: 87.4vw;
+  }
+
+  .about__title {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.72px;
+    width: 85vw;
+    margin-bottom: 15px;
+  }
+
+  .about__description {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    width: 87.4vw;
+  }
+
+  .about__area {
+    margin: 63px 0 50px;
+    grid-template-columns: 38% 62%;
+  }
+
+  .about__table-black {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 12px;
+  }
+
+  .about__table-grey {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .about__table-pale {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding-top: 10px;
+  }
+}
